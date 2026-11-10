@@ -1,9 +1,19 @@
 package com.plcoding.bookpedia.book.presentation.book_list.components
 
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.plcoding.bookpedia.book.presentation.book_list.BookListActions
+import cmp_bookpedia.composeapp.generated.resources.Res
+import cmp_bookpedia.composeapp.generated.resources.search_hint
+import com.plcoding.bookpedia.core.presentation.DarkBlue
+import com.plcoding.bookpedia.core.presentation.SandYellow
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun  BookSearchBar(
@@ -15,6 +25,21 @@ fun  BookSearchBar(
 
     OutlinedTextField(
         value = searchQuery,
-        onValueChange = onSearchQueryChange
+        onValueChange = onSearchQueryChange,
+        shape = RoundedCornerShape(100),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            cursorColor = DarkBlue,
+            focusedBorderColor = SandYellow
+        ),
+        placeholder = {
+            Text(text = stringResource(Res.string.search_hint))
+        },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Search"
+            )
+
+        }
     )
 }
